@@ -10,6 +10,15 @@ function Login() {
     email: "",
     password: "",
   });
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,6 +52,7 @@ function Login() {
         icon: "success",
         title: "Login Success",
       });
+      setCookie("email", information.email, 7); // Sets a cookie named "username" with value "JohnDoe" that expires in 7 days
       navigate("/");
     } else {
       Swal.fire({

@@ -107,7 +107,7 @@ function SignUp() {
       axios
         .post("http://localhost:1000/users", information)
         .then(() => {
-          navigate("/");
+          navigate("/login");
           Swal.fire({
             position: "center-center",
             icon: "success",
