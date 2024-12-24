@@ -85,6 +85,7 @@ import Cart from "./componant/Cart";
 import Payment from "./componant/Payment";
 import SignUp from "./componant/SignUp";
 import Users from "./componant/Users";
+import History from "./componant/History";
 
 // import ProductsProvider from "./hooks/ProductsProvider";
 const DataFetcher = lazy(() => import("./componant/FetchData/Data"));
@@ -200,6 +201,7 @@ const App = () => (
             <Route path="cart" element={<Cart />} />
             <Route path="payment" element={<Payment />} />
             <Route path="users" element={<Users />} />
+            <Route path="history" element={<History />} />
             <Route path="slider" element={<ImageSlider images={images} />} />
           </Route>
           <Route path="/login" element={<Login />} />

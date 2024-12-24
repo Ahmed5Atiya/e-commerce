@@ -10,6 +10,7 @@ function ProductsProvider({ children }) {
   const [error, setError] = useState(null);
   const navigate = useNavigate("");
   const [users, setUsers] = useState([]);
+  const [history, setHistory] = useState([]);
 
   const handelDelete = (user) => {
     axios
@@ -27,10 +28,33 @@ function ProductsProvider({ children }) {
       })
       .catch((err) => console.log(err));
   };
+  const getHistory = () => {
+    axios
+      .get("http://localhost:1000/history")
+      .then((res) => {
+        setHistory(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
   useEffect(() => {
     getData();
   }, [users]);
+  useEffect(() => {
+    getHistory();
+  }, [history]);
 
+  const createHistory = async (newItem) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:1000/history",
+        newItem
+      );
+      console.log(response);
+      setHistory([...history, response.data]);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
   const fetchData = async () => {
     try {
       const response = await axios.get(URL);
@@ -105,6 +129,9 @@ function ProductsProvider({ children }) {
   };
 
   useEffect(() => {
+    createHistory();
+  }, []);
+  useEffect(() => {
     fetchData();
   }, [URL]);
 
@@ -115,6 +142,9 @@ function ProductsProvider({ children }) {
         createItem,
         handelDelete,
         users,
+        getHistory,
+        history,
+        createHistory,
         deleteProduct,
         updateItem,
         deleteItem,

@@ -27,9 +27,7 @@
       "discountPercentage": 5.8,
       "rating": 4.46,
       "stock": 10,
-      "tags": [
-        "dairy"
-      ],
+      "tags": ["dairy"],
       "sku": "YA617RI7",
       "weight": 4,
       "dimensions": {
@@ -85,9 +83,7 @@
       "discountPercentage": 1.91,
       "rating": 3.5,
       "stock": 25,
-      "tags": [
-        "condiments"
-      ],
+      "tags": ["condiments"],
       "sku": "BTBNIIOU",
       "weight": 9,
       "dimensions": {
@@ -143,9 +139,7 @@
       "discountPercentage": 7.58,
       "rating": 3.77,
       "stock": 76,
-      "tags": [
-        "desserts"
-      ],
+      "tags": ["desserts"],
       "sku": "VEZMU1EQ",
       "weight": 5,
       "dimensions": {
@@ -269,6 +263,12 @@
       "name": "ahmedkhalid",
       "email": "atiya@gmail.com",
       "password": "123"
+    }
+  ],
+  "history": [
+    {
+      "email": "ahmedkhalid@gmail.com",
+      "id": "99bf"
     }
   ]
 }

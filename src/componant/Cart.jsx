@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { clearAll, removeFromCart } from "../rtx/slice/Product-slice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useProduct } from "../hooks/ProductsProvider";
+import { useEffect, useState } from "react";
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+  const { createHistory } = useProduct();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const TotalPrice = cart.reduce((acc, product) => {
     acc += product.price * product.count;
@@ -82,12 +85,15 @@ function Cart() {
           </tbody>
         </table>
       </div>
-        <Link
-          to={"/payment"}
-          className="w-full mb-10 text-center px-4 py-4 flex-grow text-white font-semibold hover:bg-blue-700 bg-blue-600"
-        >
-          Checkout
-        </Link>
+      <button
+        onClick={() => {
+          // createHistory(email);
+          navigate("/payment");
+        }}
+        className="w-full mb-10 text-center px-4 py-4 flex-grow text-white font-semibold hover:bg-blue-700 bg-blue-600"
+      >
+        Checkout
+      </button>
     </section>
   );
 }
